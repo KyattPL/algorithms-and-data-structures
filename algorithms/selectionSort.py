@@ -1,17 +1,26 @@
 from random import random
 
+
 def selection_sort(arr):
+    comparisons = 0
+    array_accesses = 0
     for i in range(len(arr)):
         minimum = i
         for j in range(i+1, len(arr)):
+            array_accesses += 2
+            comparisons += 1
             if arr[j] < arr[minimum]:
                 minimum = j
         if minimum != i:
+            array_accesses += 4
             arr[i], arr[minimum] = arr[minimum], arr[i]
-    return arr
+    print("Selection sort:")
+    print("No. comparisons: " + str(comparisons) +
+          ", no. array accesses: " + str(array_accesses))
+
 
 if __name__ == "__main__":
     array = []
     for i in range(20):
         array.append(random())
-    print(selection_sort(array))
+    selection_sort(array)

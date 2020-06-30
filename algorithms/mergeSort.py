@@ -41,12 +41,11 @@ def merge_sort(arr):
     return (comparisons, array_accesses)
 
 
-print("Merge sort:")
-print("No. comparisons: " + str(comparisons) +
-      ", no. array accesses: " + str(array_accesses))
-
 if __name__ == "__main__":
     array = []
     for i in range(20):
         array.append(random())
-    merge_sort(array)
+    (comparisons, array_accesses) = merge_sort(array)
+    print("Merge sort:")
+    print("No. comparisons: " + str(comparisons) +
+          ", no. array accesses: " + str(array_accesses))
