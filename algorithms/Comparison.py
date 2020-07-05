@@ -23,7 +23,7 @@ if __name__ == "__main__":
     temp = array[:]
     bubble_sort(temp)
     temp = array[:]
-    bucket_sort(temp)
+    bucket_sort(temp, how_many // 100)
     temp = array[:]
     comb_sort(temp)
     temp = array[:]

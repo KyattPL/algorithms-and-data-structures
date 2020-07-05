@@ -26,17 +26,20 @@ def bucket_sort(arr, k=5):
     for i in range(k):
         buckets.append([])
     newTab = []
+    array_accesses += len(arr)
     maximum = max(arr)
     for i in range(len(arr)):
         array_accesses += 1
         index = int(k * arr[i] / maximum)
         if index == k:
             index -= 1
+        array_accesses += 3
         buckets[index].append(arr[i])
     for i in range(k):
         (comparisons, array_accesses) = insertion_sort(
             buckets[i], comparisons, array_accesses)
         for j in range(len(buckets[i])):
+            array_accesses += 2
             newTab.append(buckets[i][j])
     print("Bucket sort:")
     print("No. comparisons: " + str(comparisons) +
