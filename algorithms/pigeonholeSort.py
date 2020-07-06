@@ -9,7 +9,7 @@ def pigeonhole_sort(arr):
     additional_space = size
     holes = [0] * size
     for x in arr:
-        array_accesses += 1
+        array_accesses += 2
         holes[x - minimum] += 1
     i = 0
     for count in range(size):

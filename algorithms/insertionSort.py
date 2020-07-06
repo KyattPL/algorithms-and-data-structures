@@ -9,12 +9,12 @@ def insertion_sort(arr):
         array_accesses += 1
         chosenElem = arr[i]
         j = i - 1
-        array_accesses += 1
         while j >= 0 and arr[j] > chosenElem:
             array_accesses += 2
             arr[j+1] = arr[j]
             j -= 1
             comparisons += 1
+        array_accesses += 1
         comparisons += 1
         array_accesses += 1
         arr[j+1] = chosenElem

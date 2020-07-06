@@ -7,7 +7,6 @@ def merge_sort(arr):
     additional_space = 0
     if len(arr) > 1:
         array_accesses += len(arr)
-        additional_space += len(arr)
         mid = len(arr)//2
         L = arr[:mid]
         R = arr[mid:]

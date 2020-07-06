@@ -8,9 +8,10 @@ def selection_sort(arr):
     for i in range(len(arr)):
         minimum = i
         for j in range(i+1, len(arr)):
-            array_accesses += 2
+            array_accesses += 1
             comparisons += 1
             if arr[j] < arr[minimum]:
+                array_accesses += 1
                 minimum = j
         comparisons += 1
         if minimum != i:

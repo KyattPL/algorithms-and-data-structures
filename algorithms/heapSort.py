@@ -1,7 +1,10 @@
 from random import random
 
 
-def heapify(arr, n, i, comps, accesses):
+def heapify(arr, n, i):
+    comps = 0
+    accesses = 0
+
     largest = i
     l = 2*i + 1
     r = 2*i + 2
@@ -20,42 +23,32 @@ def heapify(arr, n, i, comps, accesses):
     if largest != i:
         accesses += 4
         arr[i], arr[largest] = arr[largest], arr[i]
-        (comps, accesses) = heapify(arr, n, largest, comps, accesses)
+        (comps1, accesses1) = heapify(arr, n, largest)
+        comps += comps1
+        accesses += accesses1
 
     return (comps, accesses)
 
 
 def heap_sort(arr):
+    additional_space = 0
     comparisons = 0
     array_accesses = 0
-    additional_space = 0
 
     n = len(arr)
-    temp1 = 0
-    temp2 = 0
     for i in range(n//2 - 1, -1, -1):
         (comparisons1, array_accesses1) = heapify(
-            arr, n, i, comparisons, array_accesses)
-        temp1 += comparisons1
-        temp2 += array_accesses1
-    comparisons += temp1
-    array_accesses += temp2
+            arr, n, i)
+        comparisons += comparisons1
+        array_accesses += array_accesses1
 
-    temp1 = 0
-    temp2 = 0
     for i in range(n-1, 0, -1):
         array_accesses += 4
         arr[i], arr[0] = arr[0], arr[i]
         (comparisons2, array_accesses2) = heapify(
-            arr, i, 0, comparisons, array_accesses)
-        temp1 += comparisons2
-        temp2 += array_accesses2
-
-    comparisons += temp1
-    array_accesses += temp2
-
-    (comparisons, array_accesses) = (comparisons1 + comparisons2,
-                                     array_accesses1 + array_accesses2)
+            arr, i, 0)
+        comparisons += comparisons2
+        array_accesses += array_accesses2
 
     print("Heap sort:")
     print("No. comparisons: " + str(comparisons) +
