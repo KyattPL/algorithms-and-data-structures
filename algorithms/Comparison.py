@@ -14,7 +14,7 @@ from random import randint
 
 how_many = 1000
 lower_integer = 0
-upper_integer = 99
+upper_integer = 999
 
 if __name__ == "__main__":
     array = []
@@ -39,12 +39,17 @@ if __name__ == "__main__":
     temp = array[:]
     selection_sort(temp)
     temp = array[:]
-    (comparisons, array_accesses) = merge_sort(temp)
+    (comparisons, array_accesses, additional_space) = merge_sort(temp)
     print("Merge sort:")
     print("No. comparisons: " + str(comparisons) +
-          ", no. array accesses: " + str(array_accesses))
+          ", no. array accesses: " +
+          str(array_accesses) + ", no. additional space required: "
+          + str(additional_space))
     temp = array[:]
     (comparisons, array_accesses) = quick_sort(temp, 0, len(temp) - 1, 0, 0)
+    additional_space = 0
     print("Quick sort:")
     print("No. comparisons: " + str(comparisons) +
-          ", no. array accesses: " + str(array_accesses))
+          ", no. array accesses: " +
+          str(array_accesses) + ", no. additional space required: "
+          + str(additional_space))

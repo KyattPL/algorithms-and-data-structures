@@ -1,8 +1,9 @@
 from random import randint
 
 
-def counting_sort(arr, exp, comps, accesses):
+def counting_sort(arr, exp, comps, accesses, space):
     n = len(arr)
+    space += n + 10
     newArr = [0] * n
     count = [0] * 10
     for i in range(n):
@@ -21,21 +22,24 @@ def counting_sort(arr, exp, comps, accesses):
     for i in range(len(arr)):
         accesses += 1
         arr[i] = newArr[i]
-    return (comps, accesses)
+    return (comps, accesses, space)
 
 
 def lsd_radix_sort(arr):
     comparisons = len(arr) - 1
     array_accesses = len(arr)
+    additional_space = 0
     maximum = max(arr)
     exp = 1
     while maximum/exp >= 1:
-        (comparisons, array_accesses) = counting_sort(
-            arr, exp, comparisons, array_accesses)
+        (comparisons, array_accesses, additional_space) = counting_sort(
+            arr, exp, comparisons, array_accesses, additional_space)
         exp *= 10
     print("LSD Radix sort:")
     print("No. comparisons: " + str(comparisons) +
-          ", no. array accesses: " + str(array_accesses))
+          ", no. array accesses: " +
+          str(array_accesses) + ", no. additional space required: "
+          + str(additional_space))
 
 
 if __name__ == "__main__":

@@ -4,11 +4,14 @@ from random import random
 def comb_sort(arr):
     comparisons = 0
     array_accesses = 0
+    additional_space = 0
+
     factor = 1.3
     gap = len(arr)
     isSorted = False
     while not isSorted:
         gap = int(gap / factor)
+        comparisons += 1
         if gap <= 1:
             isSorted = True
             factor = 1
@@ -22,7 +25,9 @@ def comb_sort(arr):
                 isSorted = False
     print("Comb sort:")
     print("No. comparisons: " + str(comparisons) +
-          ", no. array accesses: " + str(array_accesses))
+          ", no. array accesses: " +
+          str(array_accesses) + ", no. additional space required: "
+          + str(additional_space))
 
 
 if __name__ == "__main__":
