@@ -5,7 +5,7 @@ def counting_sort(arr):
     comparisons = len(arr) - 1
     array_accesses = len(arr)
     spread = max(arr) - min(arr) + 1
-    additional_space = spread + len(arr)
+    additional_space = spread
     countArr = [0] * spread
     newArr = [0] * len(arr)
     for i in range(len(arr)):
