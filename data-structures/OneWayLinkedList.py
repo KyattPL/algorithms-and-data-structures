@@ -1,3 +1,4 @@
+# With Head only
 class OneWayLinkedList:
     class Element:
         def __init__(self, value):
@@ -50,7 +51,7 @@ class OneWayLinkedList:
         return count
 
     def remove(self, index):
-        if index < 0 or index > self.length():
+        if index < 0 or index >= self.length():
             return None
         elem = self.head
         temp = 0
@@ -73,7 +74,7 @@ class OneWayLinkedList:
             return temp
 
     def add(self, val, index):
-        if index < 0 or self.length() < index:
+        if index < 0 or self.length() <= index:
             return False
         elif index == 0:
             elem = self.head
