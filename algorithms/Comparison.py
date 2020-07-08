@@ -9,6 +9,7 @@ from mergeSort import merge_sort
 from pigeonholeSort import pigeonhole_sort
 from quickSort import quick_sort
 from selectionSort import selection_sort
+from shellSort import shell_sort
 
 from random import randint
 
@@ -32,6 +33,8 @@ if __name__ == "__main__":
     heap_sort(temp)
     temp = array[:]
     insertion_sort(temp)
+    temp = array[:]
+    shell_sort(temp)
     temp = array[:]
     lsd_radix_sort(temp)
     temp = array[:]
