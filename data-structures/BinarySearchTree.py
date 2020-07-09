@@ -1,9 +1,11 @@
+class Node:
+    def __init__(self, value):
+        self.left = None
+        self.right = None
+        self.value = value
+
+
 class BinarySearchTree:
-    class Node:
-        def __init__(self, value):
-            self.left = None
-            self.right = None
-            self.value = value
 
     def search(self, root, key):
         if root is None or root.value == key:
@@ -89,12 +91,12 @@ class BinarySearchTree:
 
 if __name__ == "__main__":
     x = BinarySearchTree()
-    root = BinarySearchTree.Node(10)
-    x.insert(root, BinarySearchTree.Node(7))
-    x.insert(root, BinarySearchTree.Node(12))
-    x.insert(root, BinarySearchTree.Node(5))
-    x.insert(root, BinarySearchTree.Node(18))
-    x.insert(root, BinarySearchTree.Node(13))
+    root = Node(10)
+    x.insert(root, Node(7))
+    x.insert(root, Node(12))
+    x.insert(root, Node(5))
+    x.insert(root, Node(18))
+    x.insert(root, Node(13))
     x.in_order(root)
     print()
     x.delete_node(root, 12)
