@@ -70,6 +70,25 @@ class WeightedGraph:
 
         print(distance)
 
+    def prim_mst(self, start):
+        visited = []
+        distance = [0] * len(self.vertices)
+        for vertex in self.vertices:
+            (exists, weight) = self.edge_exists(start, vertex)
+            if vertex != start and exists:
+                distance[vertex] = weight
+            else:
+                distance[vertex] = float("inf")
+        while len(visited) != len(self.vertices):
+            u = self.minimum_dist(distance, visited)
+            visited.append(u)
+            for vert in self.vertices:
+                if vert not in visited:
+                    distance[vert] = min(
+                        distance[vert], self.get_weight(u, vert))
+
+        print(distance)
+
 
 if __name__ == "__main__":
     g = WeightedGraph()
@@ -85,3 +104,4 @@ if __name__ == "__main__":
     g.add_edge(5, 6, 3)
     print(g.kruskal())
     g.dijkstra_single_source(0)
+    g.prim_mst(0)
