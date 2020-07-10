@@ -3,6 +3,7 @@ class Node:
         self.left = None
         self.right = None
         self.value = value
+        self.parent = None
 
 
 class BinarySearchTree:
@@ -23,11 +24,13 @@ class BinarySearchTree:
             if root.value < node.value:
                 if root.right is None:
                     root.right = node
+                    node.parent = root
                 else:
                     self.insert(root.right, node)
             else:
                 if root.left is None:
                     root.left = node
+                    node.parent = root
                 else:
                     self.insert(root.left, node)
 
@@ -74,11 +77,13 @@ class BinarySearchTree:
         else:
             if root.left is None:
                 temp = root.right
+                temp.parent = root.parent
                 root = None
                 return temp
 
             elif root.right is None:
                 temp = root.left
+                temp.parent = root.parent
                 root = None
                 return temp
 
